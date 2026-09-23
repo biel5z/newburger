@@ -1,0 +1,223 @@
+@use 'tokens' as *;
+
+// ----- Logo (componente 24:147) -----
+.logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 27px;
+  gap: 10px;
+
+  &__icon {
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    flex: none;
+  }
+
+  &__text {
+    font-size: 20px;
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+
+  // versão grande do rodapé (248×62)
+  &--footer {
+    height: 62px;
+    gap: 23px;
+    color: $c-white;
+
+    .logo__icon {
+      width: 62px;
+      height: 62px;
+    }
+    .logo__text {
+      font-size: 40px;
+      padding-top: 4px;
+    }
+  }
+}
+
+// ----- Header -----
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: 83px 77px 0 69px;
+    height: var(--header-h);
+    transition:
+      padding 0.25s ease,
+      height 0.25s ease;
+  }
+
+  &.is-scrolled {
+    background: rgba($c-yellow, 0.96);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+
+    .header__inner {
+      padding-top: 22px;
+      height: 70px;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    margin-top: -6px;
+    position: relative;
+
+    &-bar,
+    &-bar::before,
+    &-bar::after {
+      position: absolute;
+      left: 8px;
+      width: 24px;
+      height: 3px;
+      background: $c-brown;
+      border-radius: 2px;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+    &-bar {
+      top: 18px;
+    }
+    &-bar::before,
+    &-bar::after {
+      content: '';
+      left: 0;
+    }
+    &-bar::before {
+      top: -8px;
+    }
+    &-bar::after {
+      top: 8px;
+    }
+  }
+
+  @include down($bp-lg) {
+    &__inner {
+      padding: 24px 24px 0;
+      height: 76px;
+    }
+    &.is-scrolled .header__inner {
+      padding-top: 22px;
+      height: 70px;
+    }
+    &__toggle {
+      display: block;
+    }
+    &.is-menu-open {
+      background: $c-yellow;
+
+      .header__toggle-bar {
+        background: transparent;
+        &::before {
+          transform: translateY(8px) rotate(45deg);
+        }
+        &::after {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+      .nav {
+        display: block;
+      }
+    }
+  }
+}
+
+// ----- Navegação -----
+.nav {
+  &__list {
+    display: flex;
+    gap: 59px;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+    line-height: $lh;
+    white-space: nowrap;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transition: transform 0.2s ease;
+    }
+
+    &:hover::after,
+    &.is-active::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &__badge {
+    display: inline-grid;
+    place-items: center;
+    min-width: 20px;
+    height: 20px;
+    padding-inline: 5px;
+    border-radius: 10px;
+    background: $c-red;
+    color: $c-white;
+    font-size: 14px;
+    line-height: 1;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  @include down($bp-xl) {
+    &__list {
+      gap: 36px;
+    }
+  }
+
+  @include down($bp-lg) {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $c-yellow;
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.25);
+    padding: 8px 24px 24px;
+
+    &__list {
+      flex-direction: column;
+      gap: 0;
+    }
+    &__link {
+      width: 100%;
+      padding: 14px 0;
+      font-size: 26px;
+      border-bottom: 1px solid rgba($c-brown, 0.2);
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

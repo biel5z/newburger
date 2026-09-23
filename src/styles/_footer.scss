@@ -1,0 +1,102 @@
+@use 'tokens' as *;
+
+// Frame 1 (136:258) — 1280×451
+.footer {
+  position: relative;
+  margin-top: 182px;
+  height: 451px;
+  overflow: hidden;
+  background: rgba(31, 29, 29, 0.66);
+  color: $c-white;
+
+  &__bg {
+    position: absolute;
+    top: -2.28px;
+    width: 1762.11px;
+    height: 531.31px;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    // alinha a arte à direita em telas maiores/menores que 1280
+    left: calc(100% - 1280px - 1.11px);
+
+    img {
+      width: 1760.32px;
+      height: 525.28px;
+      max-width: none;
+      object-fit: cover;
+      rotate: -0.2deg;
+      opacity: calc(0.69 * 0.65);
+    }
+  }
+
+  &__inner {
+    position: relative;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding: 51px 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .logo--footer {
+      margin-left: -8px; // x:32 no Figma
+    }
+  }
+
+  &__contacts {
+    margin-top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__contact {
+    display: flex;
+    width: fit-content;
+    align-items: flex-end;
+    gap: 12px;
+    font-size: 32px;
+    line-height: $lh;
+    transition: color 0.15s ease;
+
+    img {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+      color: $c-yellow;
+    }
+
+    &--insta {
+      align-items: center;
+      gap: 8px;
+      margin-left: -3px; // x:37 no Figma
+    }
+  }
+
+  &__copy {
+    margin-top: 62px;
+    font-size: 32px;
+  }
+
+  @include down($bp-sm) {
+    height: auto;
+    padding-bottom: 40px;
+
+    &__inner {
+      padding-inline: $gutter + 8px;
+    }
+    &__contacts {
+      margin-top: 48px;
+      gap: 28px;
+    }
+    &__contact,
+    &__copy {
+      font-size: 24px;
+    }
+    &__copy {
+      margin-top: 40px;
+    }
+  }
+}

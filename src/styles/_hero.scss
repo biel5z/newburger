@@ -1,0 +1,197 @@
+@use 'tokens' as *;
+
+// Frame "Menu" (136:218) — 1280×716
+.hero {
+  position: relative;
+  background: $c-yellow;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill; // textura esticada, como no Figma
+    opacity: 0.28;
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    max-width: 1280px;
+    height: 716px;
+    margin-inline: auto;
+  }
+
+  // Composição hambúrguer + batata + refri + selo (caixa 575×427, origem x:-22 y:146)
+  &__art {
+    position: absolute;
+    left: -22px;
+    top: 146px;
+    width: 575px;
+    aspect-ratio: 575 / 427;
+    container-type: inline-size;
+
+    > * {
+      position: absolute;
+    }
+  }
+
+  &__refri {
+    left: 65.739%;
+    top: 0;
+    width: 34.261%;
+    height: 89.93%;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      max-width: none;
+      width: 244.16%;
+      height: 125.26%;
+      left: -72.08%;
+      top: -10.68%;
+    }
+  }
+
+  &__batata {
+    left: 0;
+    top: 31.616%;
+    width: 76%;
+    height: 68.384%;
+    object-fit: cover;
+  }
+
+  &__burger {
+    left: 18.087%;
+    top: 19.204%;
+    width: 78.435%;
+    height: 77.283%;
+    object-fit: cover;
+  }
+
+  &__content {
+    position: absolute;
+    left: 853px;
+    top: 311px;
+    width: 377px;
+  }
+
+  &__tag {
+    display: grid;
+    place-items: center;
+    width: 359.36px;
+    height: 45.33px;
+    border: 1px dashed $c-brown;
+    border-radius: 4px;
+    font-family: $f-lekton;
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    line-height: $lh;
+  }
+
+  &__title {
+    margin-top: 16.15px;
+    font-family: $f-bevan;
+    line-height: $lh;
+    text-shadow: 0 4px 4px $c-white;
+
+    span {
+      display: block;
+    }
+  }
+  &__title-lg {
+    font-size: 64px;
+  }
+  &__title-md {
+    font-size: 48px;
+  }
+
+  // ---------- responsivo ----------
+  @include down($bp-xl) {
+    &__content {
+      left: auto;
+      right: 50px;
+    }
+  }
+
+  @include down($bp-lg) {
+    &__inner {
+      height: auto;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 24px;
+      padding: 120px $gutter 56px;
+    }
+    &__art,
+    &__content {
+      position: relative;
+      inset: auto;
+    }
+    &__art {
+      width: min(575px, 100%);
+    }
+    &__content {
+      width: auto;
+      text-align: center;
+    }
+    &__tag {
+      margin-inline: auto;
+      width: min(359.36px, 100%);
+    }
+  }
+
+  @include down($bp-sm) {
+    &__tag {
+      font-size: 16px;
+    }
+    &__title-lg {
+      font-size: 48px;
+    }
+    &__title-md {
+      font-size: 36px;
+    }
+  }
+}
+
+// Selo "20% OFF" (136:235)
+.promo-seal {
+  left: 72.696%;
+  top: 69.555%;
+  width: 20.017%;
+  aspect-ratio: 1;
+
+  &__outer,
+  &__inner {
+    position: absolute;
+  }
+  &__outer {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__inner {
+    // 101.394 / 115.096 = 88.1%, offset 6.851
+    left: 5.952%;
+    top: 5.952%;
+    width: 88.096%;
+    height: 88.096%;
+  }
+
+  &__text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    rotate: 15.75deg;
+    font-family: $f-anybody;
+    font-weight: 600;
+    font-size: 5.565cqw; // 32px quando a arte tem 575px
+    line-height: $lh;
+    color: $c-white;
+    text-align: center;
+    white-space: nowrap;
+  }
+}

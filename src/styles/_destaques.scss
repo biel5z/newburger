@@ -1,0 +1,91 @@
+@use 'tokens' as *;
+
+// Group Home (136:239) — Zoom 1/2/3
+.destaques {
+  padding-top: 98px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 595fr 543fr;
+    grid-template-rows: 185px 185px;
+    column-gap: 27px;
+    row-gap: 28px;
+    width: min(100% - #{$gutter * 2}, 1166px);
+  }
+
+  @include down($bp-md) {
+    &__grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      grid-auto-rows: auto;
+      row-gap: 20px;
+    }
+  }
+}
+
+.destaque {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: $radius;
+  background: #d9d9d9;
+  color: $c-offwhite;
+  isolation: isolate;
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover &__img {
+    transform: scale(1.05);
+  }
+
+  &__text {
+    position: absolute;
+    left: 2.95%;
+    top: 14.05%;
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+  }
+
+  &__kicker {
+    font-size: 20px;
+  }
+  &__title {
+    font-size: 32px;
+  }
+
+  &--lg {
+    grid-row: span 2;
+
+    .destaque__text {
+      left: 5.04%;
+      top: 8.54%;
+    }
+  }
+
+  @include down($bp-md) {
+    aspect-ratio: 543 / 185;
+
+    &--lg {
+      grid-row: auto;
+      aspect-ratio: 595 / 398;
+    }
+  }
+
+  @include down($bp-sm) {
+    &__kicker {
+      font-size: 16px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+  }
+}

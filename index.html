@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="New Burger — mordidas que surpreendem. Conheça o cardápio e faça seu pedido." />
+    <meta name="theme-color" content="#feba30" />
+    <title>New Burger</title>
+    <link rel="icon" type="image/svg+xml" href="/img/logo-burger-icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anybody:wght@600&family=Bevan&family=League+Gothic&family=Lekton:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ============ HEADER ============ -->
+    <header class="header" data-header>
+      <div class="header__inner">
+        <a class="logo" href="#home" aria-label="New Burger — início">
+          <span class="logo__icon"><img src="/img/logo-burger-icon.svg" alt="" width="24.5" height="22.25" /></span>
+          <span class="logo__text">NEW BURGER</span>
+        </a>
+
+        <button class="header__toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-toggle>
+          <span class="sr-only">Abrir menu</span>
+          <span class="header__toggle-bar"></span>
+        </button>
+
+        <nav class="nav" id="menu-principal" aria-label="Menu principal" data-menu>
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#home" data-nav-link>HOME</a></li>
+            <li><a class="nav__link" href="#cardapio" data-nav-link>CARDÁPIO</a></li>
+            <li>
+              <button class="nav__link nav__link--btn" type="button" data-pedido-open>
+                PEDIDOS <span class="nav__badge" data-pedido-count hidden>0</span>
+              </button>
+            </li>
+            <li><a class="nav__link" href="#promocoes" data-nav-link>PROMOÇÕES</a></li>
+            <li><a class="nav__link" href="#sobre" data-nav-link>SOBRE NÓS</a></li>
+            <li><a class="nav__link" href="#contato" data-nav-link>CONTATO</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="home" aria-labelledby="hero-titulo">
+        <img class="hero__bg" src="/img/hero-bg.jpg" alt="" />
+        <div class="hero__inner">
+          <div class="hero__art">
+            <div class="hero__refri"><img src="/img/hero-refri.png" alt="" /></div>
+            <img class="hero__batata" src="/img/hero-batata.png" alt="" />
+            <img class="hero__burger" src="/img/hero-hamburguer.png" alt="Special Burger com batata frita e refrigerante" />
+            <div class="promo-seal" aria-label="20% de desconto">
+              <img class="promo-seal__outer" src="/img/promo-ellipse-outer.svg" alt="" />
+              <img class="promo-seal__inner" src="/img/promo-ellipse-inner.png" alt="" />
+              <span class="promo-seal__text" aria-hidden="true">20%<br />OFF</span>
+            </div>
+          </div>
+
+          <div class="hero__content">
+            <p class="hero__tag">Mordidas que surpreendem.</p>
+            <h1 class="hero__title" id="hero-titulo">
+              <span class="hero__title-lg">SPECIAL</span>
+              <span class="hero__title-md">BURGER</span>
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ DESTAQUES / PROMOÇÕES ============ -->
+      <section class="destaques" id="promocoes" aria-label="Destaques da casa">
+        <div class="destaques__grid container">
+          <a class="destaque destaque--lg" href="#cardapio">
+            <img class="destaque__img" src="/img/destaque-popular.png" alt="" />
+            <span class="destaque__text">
+              <span class="destaque__kicker">EXPERIENTE HOJE</span>
+              <span class="destaque__title">LANCHE MAIS POPULAR</span>
+            </span>
+          </a>
+          <a class="destaque" href="#cardapio">
+            <img class="destaque__img" src="/img/destaque-divertido.png" alt="" />
+            <span class="destaque__text">
+              <span class="destaque__kicker">EXPERIENTE HOJE</span>
+              <span class="destaque__title">MAIS DIVERTIDO E SABOROSO</span>
+            </span>
+          </a>
+          <a class="destaque" href="#cardapio">
+            <img class="destaque__img" src="/img/destaque-apimentado.png" alt="" />
+            <span class="destaque__text">
+              <span class="destaque__kicker">EXPERIENTE HOJE</span>
+              <span class="destaque__title">APIMENTADO E SUCULENTO</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ CARDÁPIO ============ -->
+      <section class="cardapio" id="cardapio" aria-labelledby="cardapio-titulo">
+        <div class="container">
+          <header class="section-head">
+            <p class="section-head__tag">HAMBURGUER SEMPRE SABOROSO</p>
+            <h2 class="section-head__title" id="cardapio-titulo">Escolha e aproveite</h2>
+          </header>
+          <!-- cards renderizados por src/components/cardapio.ts a partir de src/data/lanches.ts -->
+          <ul class="cardapio__grid" data-cardapio></ul>
+        </div>
+      </section>
+
+      <!-- ============ SOBRE NÓS / EQUIPE ============ -->
+      <section class="sobre" id="sobre" aria-label="Sobre a New Burger">
+        <div class="container sobre__list">
+          <article class="info-card" aria-labelledby="sobre-titulo">
+            <div class="info-card__text">
+              <p class="info-card__kicker">NEW BURGER, THE BEST IN THE WORLD</p>
+              <h2 class="info-card__title" id="sobre-titulo">SOBRE NÓS</h2>
+              <p class="info-card__body">
+                A New Burger nasceu com a missão de transformar cada hambúrguer em uma experiência única. Inspirados pelo
+                amor por sabores autênticos e pela paixão por oferecer o melhor, combinamos ingredientes frescos, receitas
+                exclusivas e um ambiente acolhedor para criar momentos inesquecíveis.
+              </p>
+            </div>
+            <div class="info-card__photo">
+              <img src="/img/sobre-nos.jpg" alt="Garçom segurando bandeja com dois hambúrgueres e batatas fritas" loading="lazy" />
+            </div>
+          </article>
+
+          <article class="info-card info-card--reverse" aria-labelledby="equipe-titulo">
+            <div class="info-card__photo">
+              <img src="/img/equipe.jpg" alt="Equipe da New Burger sorrindo, de avental, dentro da loja" loading="lazy" />
+            </div>
+            <div class="info-card__text">
+              <p class="info-card__kicker">NEW BURGER, THE BEST IN THE WORLD</p>
+              <h2 class="info-card__title" id="equipe-titulo">EQUIPE</h2>
+              <p class="info-card__body">
+                Na New Burger, acreditamos que um grande sabor começa com uma grande equipe. Por trás de cada hambúrguer há
+                um time apaixonado pelo que faz, comprometido em oferecer sempre o melhor. Desde os nossos chefs, que criam
+                combinações deliciosas, até o atendimento, que preza por tornar cada visita especial, trabalhamos juntos
+                para garantir uma experiência única para você.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER / CONTATO ============ -->
+    <footer class="footer" id="contato">
+      <div class="footer__bg" aria-hidden="true"><img src="/img/destaque-apimentado.png" alt="" loading="lazy" /></div>
+      <div class="footer__inner">
+        <a class="logo logo--footer" href="#home" aria-label="New Burger — voltar ao topo">
+          <span class="logo__icon"><img src="/img/logo-burger-icon-footer.svg" alt="" width="53.6667" height="48.5" /></span>
+          <span class="logo__text">NEW BURGER</span>
+        </a>
+
+        <ul class="footer__contacts">
+          <li>
+            <a class="footer__contact" href="mailto:correiareisg@gmail.com">
+              <img src="/img/icon-email.svg" alt="" width="29.0085" height="23.006" />
+              <span>correiareisg@gmail.com</span>
+            </a>
+          </li>
+          <li>
+            <a class="footer__contact footer__contact--insta" href="https://www.instagram.com/biel_5z/" target="_blank" rel="noopener">
+              <img src="/img/icon-instagram.svg" alt="" width="37" height="37" />
+              <span>@biel_5z</span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="footer__copy">© New House <span data-year>2025</span>. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- ============ PAINEL DE PEDIDOS ============ -->
+    <div class="pedido" data-pedido hidden>
+      <div class="pedido__overlay" data-pedido-close></div>
+      <aside class="pedido__panel" role="dialog" aria-modal="true" aria-labelledby="pedido-titulo" tabindex="-1">
+        <header class="pedido__head">
+          <h2 class="pedido__title" id="pedido-titulo">SEU PEDIDO</h2>
+          <button class="pedido__close" type="button" data-pedido-close aria-label="Fechar pedido">×</button>
+        </header>
+        <ul class="pedido__list" data-pedido-list></ul>
+        <p class="pedido__empty" data-pedido-empty>Seu pedido está vazio. Escolha um lanche no cardápio!</p>
+        <footer class="pedido__foot">
+          <button class="btn btn--ghost" type="button" data-pedido-clear>LIMPAR</button>
+          <a class="btn" href="#" data-pedido-send>ENVIAR PEDIDO</a>
+        </footer>
+      </aside>
+    </div>
+
+    <div class="toast" role="status" aria-live="polite" data-toast></div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

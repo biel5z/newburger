@@ -1,0 +1,178 @@
+@use 'sass:color';
+@use 'tokens' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: $c-bg;
+  color: $c-brown;
+  font-family: $f-gothic;
+  line-height: $lh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid $c-red;
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(100% - #{$gutter * 2}, $container);
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  background: $c-brown;
+  color: $c-white;
+  padding: 10px 16px;
+  font-size: 20px;
+  border-radius: $radius-sm;
+
+  &:focus {
+    top: 16px;
+  }
+}
+
+// Botão vermelho "ENCOMENDE AGORA"
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-width: 193px;
+  padding-inline: 12px;
+  background: $c-red;
+  color: $c-offwhite;
+  border-radius: $radius-sm;
+  font-family: $f-gothic;
+  font-size: 32px;
+  line-height: $lh;
+  white-space: nowrap;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    background: color.adjust($c-red, $lightness: -8%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba($c-brown, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &[aria-disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $c-brown;
+    box-shadow: inset 0 0 0 2px $c-brown;
+
+    &:hover {
+      background: rgba($c-brown, 0.08);
+    }
+  }
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 60;
+  translate: -50% 20px;
+  opacity: 0;
+  pointer-events: none;
+  background: $c-brown;
+  color: $c-white;
+  padding: 12px 20px;
+  border-radius: $radius-sm;
+  font-size: 22px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition:
+    opacity 0.2s ease,
+    translate 0.2s ease;
+
+  &.is-visible {
+    opacity: 1;
+    translate: -50% 0;
+  }
+}

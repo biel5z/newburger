@@ -1,0 +1,40 @@
+// ===== Design tokens (extraídos do Figma "New Burger") =====
+$c-yellow: #feba30;
+$c-brown: #582e2e;
+$c-red: #f13939;
+$c-red-seal: #e62626;
+$c-bg: #2d2727;
+$c-white: #ffffff;
+$c-offwhite: #fdfbfb;
+
+$f-gothic: 'League Gothic', 'Impact', sans-serif;
+$f-bevan: 'Bevan', 'Georgia', serif;
+$f-lekton: 'Lekton', monospace;
+$f-anybody: 'Anybody', sans-serif;
+
+$lh: 1.002;
+$radius: 10px;
+$radius-sm: 5px;
+
+$container: 1164px;
+$gutter: 16px;
+
+// breakpoints
+$bp-xl: 1279px;
+$bp-lg: 1099px;
+$bp-md: 820px;
+$bp-sm: 560px;
+
+@mixin down($bp) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}
+
+:root {
+  --c-yellow: #{$c-yellow};
+  --c-brown: #{$c-brown};
+  --c-red: #{$c-red};
+  --c-bg: #{$c-bg};
+  --header-h: 146px;
+}

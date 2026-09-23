@@ -1,0 +1,135 @@
+@use 'tokens' as *;
+
+// Group Cardapio (136:244)
+.cardapio {
+  padding-top: 98px;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 364px);
+    justify-content: center;
+    column-gap: 35px;
+    row-gap: 36px;
+    margin-top: 71px;
+  }
+
+  @include down($bp-xl) {
+    &__grid {
+      column-gap: 24px;
+    }
+  }
+
+  @include down($bp-lg) {
+    &__grid {
+      grid-template-columns: repeat(2, 364px);
+    }
+  }
+
+  @include down($bp-md) {
+    &__grid {
+      grid-template-columns: minmax(0, 364px);
+      margin-top: 48px;
+    }
+  }
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+
+  &__tag {
+    display: grid;
+    place-items: center;
+    height: 35px;
+    padding-inline: 8px;
+    min-width: 202px;
+    background: $c-yellow;
+    color: $c-brown;
+    font-size: 20px;
+  }
+
+  &__title {
+    font-family: $f-bevan;
+    font-size: 32px;
+    color: $c-white;
+    filter: drop-shadow(0 4px 2px $c-brown);
+  }
+}
+
+// Card "Lanche" (364×505)
+.lanche {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 505px;
+  padding: 0 31px 124px; // 68 (bottom do botão) + 38 (altura) + respiro
+  background: $c-yellow;
+  border-radius: $radius;
+  overflow: hidden;
+  text-align: center;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.4);
+  }
+
+  &__media {
+    position: relative;
+    width: 100%;
+    height: var(--titulo-top, 236px);
+    flex: none;
+
+    img {
+      position: absolute;
+      left: 50%;
+      top: var(--media-top);
+      translate: -50% 0;
+      width: var(--media-w);
+      height: var(--media-h);
+      max-width: none;
+      object-fit: var(--media-fit);
+      transition: transform 0.35s ease;
+    }
+  }
+
+  &:hover &__media img {
+    transform: scale(1.06) rotate(-2deg);
+  }
+
+  &__nome {
+    font-size: 32px;
+    line-height: $lh;
+    white-space: nowrap;
+  }
+
+  // o card do Chicken tem o título 6px acima
+  &__nome[style] {
+    margin-top: calc(var(--titulo-top) - 236px);
+  }
+
+  &__desc {
+    width: 301px;
+    max-width: 100%;
+    margin-top: 4px;
+    font-size: 20px;
+    line-height: $lh;
+  }
+
+  &__cta {
+    position: absolute;
+    left: calc(50% - 0.5px);
+    bottom: 68px;
+    translate: -50% 0;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
